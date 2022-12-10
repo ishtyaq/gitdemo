@@ -7,7 +7,7 @@ name: Deploy    # Name of the workflow
 on: 
   push:
     branches:
-      - user-1
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest

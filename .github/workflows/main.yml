@@ -4,10 +4,10 @@ name: Deploy    # Name of the workflow
 
 # Events that trigger a workflow:
 # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
-on:
+on: 
   push:
     branches:
-      - master
+      - user-1
 jobs:
   build:
     runs-on: ubuntu-latest

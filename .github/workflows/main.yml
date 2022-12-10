@@ -13,7 +13,7 @@ jobs:
             echo "login ${{secrets.HEROKU_API_USER}}" >> ~/.netrc
             echo "password ${{secrets.HEROKU_API_KEY}}" >> ~/.netrc
             
-            heroku auth:token
+           
             heroku apps:info
 
         - name: Set up Heroku CLI

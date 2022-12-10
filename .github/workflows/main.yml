@@ -1,0 +1,30 @@
+name: Deploy
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Configure Heroku user
+          env:
+            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          run: |
+            echo "machine api.heroku.com" >> ~/.netrc
+            echo "login ${{secrets.HEROKU_API_USER}}" >> ~/.netrc
+            echo "password ${{secrets.HEROKU_API_KEY}}" >> ~/.netrc
+
+            heroku auth:token
+            heroku apps:info
+
+        - name: Set up Heroku CLI
+          run: |
+            wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh
+            heroku git:remote -a gitdemo
+        - name: Create Procfile
+          run: |
+            echo "web: gunicorn app:app" > Procfile
+        - name: Install dependencies and create requirements.txt
+          run: |
+            pip install gunicorn
+            pip freeze >
+

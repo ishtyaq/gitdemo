@@ -4,8 +4,10 @@ name: Deploy    # Name of the workflow
 
 # Events that trigger a workflow:
 # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
-on: push
-
+on:
+  push:
+    branches:
+      - master
 jobs:
   # Check out the following article for more inspiration on setting up a
   # standard CI/CD pipeline for most Python projects:

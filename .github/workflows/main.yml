@@ -4,19 +4,21 @@ name: Deploy    # Name of the workflow
 on: push
 
 jobs:
-  build:
+  deploy:
+    # If the test & lint jobs don't pass,
+    # the deploy job willn't even execute
+    #needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Deploying to Heroku
+        # More details available at:
+        # https://github.com/akhileshns/heroku-deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "gitdemo" #Must be unique in Heroku
+          heroku_api_key:  ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "gitdemo"
           heroku_email: "rao.ishtiaq@gmail.com"
-          usedocker: true
-          docker_build_args: |
-            NODE_ENV
-            SECRET_KEY
-        env:
-          NODE_ENV: production
-          SECRET_KEY: ${{ secrets.HEROKU_API_KEY }}
+          healthcheck: "https://gitdemo.herokuapp.com/healthcheck"
+          rollbackonhealthcheckfailed: true

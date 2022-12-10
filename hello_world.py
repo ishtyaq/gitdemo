@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def hello_world():
     msg = "user 1: "
+    msg += ", user2: "
     return msg + "Hello, World!"
 
 

@@ -28,7 +28,7 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key:  ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "demogit"
+          heroku_app_name: "gitdemo"
           heroku_email: "rao.ishiaq@gmail.com"
-          healthcheck: "https://demogit.herokuapp.com/healthcheck"
+          healthcheck: "https://gitdemo.herokuapp.com/healthcheck"
           rollbackonhealthcheckfailed: true

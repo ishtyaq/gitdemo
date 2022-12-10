@@ -12,7 +12,7 @@ jobs:
             echo "machine api.heroku.com" >> ~/.netrc
             echo "login ${{secrets.HEROKU_API_USER}}" >> ~/.netrc
             echo "password ${{secrets.HEROKU_API_KEY}}" >> ~/.netrc
-            heroku sharing:add ${{secrets.HEROKU_API_USER}}
+            
             heroku auth:token
             heroku apps:info
 

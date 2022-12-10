@@ -16,5 +16,7 @@ jobs:
           usedocker: true
           docker_build_args: |
             NODE_ENV
+            SECRET_KEY
         env:
-          NODE_ENV: development
+          NODE_ENV: production
+          SECRET_KEY: ${{ secrets.HEROKU_API_KEY }}

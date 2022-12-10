@@ -18,7 +18,9 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "gitdemo" #Must be unique in Heroku
           heroku_email: "rao.ishtiaq@gmail.com"
-          remote_branch: "master"
-          healthcheck: "https://gitdemo.herokuapp.com/health"
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
+          usedocker: true
+          docker_build_args: |
+            NODE_ENV
+            #SECRET_KEY
+        env:
+          NODE_ENV: development

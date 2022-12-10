@@ -12,9 +12,6 @@ jobs:
             echo "machine api.heroku.com" >> ~/.netrc
             echo "login ${{secrets.HEROKU_API_USER}}" >> ~/.netrc
             echo "password ${{secrets.HEROKU_API_KEY}}" >> ~/.netrc
-            
-           
-
         - name: Set up Heroku CLI
           run: |
             wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh
